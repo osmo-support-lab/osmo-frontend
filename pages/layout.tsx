@@ -84,25 +84,18 @@ const MenuLinkButton = ({ icon, text }: DefaultLinkItemType) => {
     <Button
       title={text}
       display="flex"
-      variant={'solid'}
+      variant={'outline'}
       justifyContent="start"
       alignItems="center"
-      fontSize="2xl"
-      fontWeight="medium"
-      textAlign="start"
-      px={2}
-      w="full"
-      h="full"
+      fontSize="xl"
       minH={10}
-      maxH="fit-content"
-      whiteSpace="break-spaces"
-      lineHeight={1.1}
+      maxH={10}
       _hover={{
-        bg: 'blackAlpha.700'
+        bg: 'osl.dark-blue.900'
       }}
       _focus={{ boxShadow: '0 0 0 2px #C47CCF' }}
     >
-      <Stack isInline={true} spacing={3} alignItems="center">
+      <Stack isInline={true} spacing={1} alignItems="center">
         {icon}
         <Text fontWeight={'normal'}>{text}</Text>
       </Stack>
@@ -333,58 +326,25 @@ const DesktopMenu = ({
   return (
     <Flex>
       {/* sidebar */}
-      <Stack
-        spacing={4}
+      {/* navbar */}
+      <Box
         position="fixed"
         top={0}
-        bottom={0}
         left={0}
-        minW={52}
-        w="full"
-        maxW={60}
-        bgGradient="linear(to-t, rgba(204, 0, 255, .5), rgba(51, 0, 102, 0.95))"
-        bgColor={'transparent'}
-        boxShadow={handleChangeColorModeValue(
-          colorMode,
-          '1px 0 1px #E2E8F0',
-          '1px 0 1px rgba(255, 255, 255, 0.16)'
-        )}
-      >
-        {logo && (
-          <Flex justify="center" align="center" p={4} pb={0}>
-            {logo}
-          </Flex>
-        )}
+        right={0}
+        zIndex="sticky" >
         <Stack
-          flex={1}
-          pl={4}
-          pr={1.5}
-          py={2}
-          overflowY="scroll"
-          css={{
-            // For Firefox
-            scrollbarWidth: 'thin',
-            // For Chrome and other browsers except Firefox
-            '&::-webkit-scrollbar': {
-              width: '10px',
-              background: 'transparent'
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: handleChangeColorModeValue(
-                colorMode,
-                'rgba(0,0,0,0.1)',
-                'rgba(255,255,255,0.1)'
-              ),
-              borderRadius: '6px',
-              border: '3px solid',
-              borderColor: handleChangeColorModeValue(
-                colorMode,
-                '#fff',
-                '#1A202C'
-              )
-            }
-          }}
-        >
+          isInline={true}
+          spacing={3}
+          justifyContent="center"
+          alignItems="center"
+          bgGradient="linear(to-tr, rgba(0,0,102,.5), #330099)"
+          bgColor='transparent'
+          boxShadow={'3 2px 2px osl.orange.900'}
+          py={0}
+        > 
+          <Flex align={'center'} mr={'50px'}>{logo}
+        </Flex>    
           {links.map(({ label, href, icon }) => {
             return (
               <>
@@ -403,20 +363,22 @@ const DesktopMenu = ({
               </>
             );
           })}
-        </Stack>
-        {connectButton && (
-          <Center position="relative" w="full" h={20} p={4} pt={2}>
+          {connectButton && (
+          <Center h={20}>
             {connectButton}
           </Center>
         )}
-      </Stack>
+        </Stack>
+      </Box>
       {/* content */}
       <Box
         position="fixed"
-        top={20}
-        left={60}
+        top={0}
+        left={0}
         bottom={0}
         right={0}
+        zIndex={-999}
+        bgColor={'osl.dark-blue.800'}
         overflowY="scroll"
         css={{
           // For Firefox
@@ -493,7 +455,7 @@ const SimpleLayout = ({
 
 export default function Layout () {
   const logo = (
-    <Box w={{ base: 10, lg: 20 }} h={{ base: 10, lg: 20 }}>
+    <Box>
       <Image src="https://uploads-ssl.webflow.com/623a0c9828949e55356286f9/63901363f1ad117475ea565e_osmosis%20logo.svg" />
     </Box>
   );
@@ -519,19 +481,19 @@ export default function Layout () {
       icon: <GiGavel/>
     },
     {
-      label: 'Discord',
+      label: 'Support',
+      href: 'https://support.osmosis.zone',
+      icon: <HiWrenchScrewdriver/>
+    },
+    {
+      label: '',
       href: 'https://discord.gg/osmosis',
       icon: <SiDiscord/>
     },
     {
-      label: 'Telegram',
+      label: '',
       href: 'https://t.me/osmosis_chat',
       icon: <SiTelegram/>
-    },
-    {
-      label: 'Support',
-      href: 'https://support.osmosis.zone',
-      icon: <HiWrenchScrewdriver/>
     }
   ];
 
@@ -547,7 +509,7 @@ export default function Layout () {
         zIndex={'-1000'}
         src='./bg.svg'
         position={'fixed'}
-        top={'-85px'}
+        top={'-75px'}
         left={0}
         minH={'1080px'} minW={'1920px'} />
       </SimpleLayout>

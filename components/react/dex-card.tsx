@@ -128,27 +128,27 @@ const Setting = () => {
           <Icon
             zIndex={-10}
             as={BsHexagonFill}
-            w={8}
-            h={8}
+              w={'2.0rem'}
+              h={'2.0rem'}
             color={useColorModeValue('gray.100', 'whiteAlpha.300')}
           />
           <Icon
             position="absolute"
             top={0}
-            left={1}
+            left={0}
             right={0}
             zIndex={10}
             as={BsHexagon}
-            w={8}
-            h={8}
+              w={'2.25rem'}
+              h={'2.25rem'}
           />
           <Icon
             position="absolute"
-            top={2}
-            left={3}
-            right={2}
-            w={4}
-            h={4}
+            top={1}
+            left={1}
+            right={0}
+              w={'1.75rem'}
+              h={'1.75rem'}
             as={RiSettings4Fill}
           />
         </Button>
@@ -274,27 +274,23 @@ const FromToken = ({
   const customStyles = {
     control: (provided: SystemStyleObject) => ({
       ...provided,
-      bgColor: 'osl.purple.500',
-      bgGradient: "linear(to-br, rgba(0,0,102,.9), #330099)",
+      bgColor: 'osl.lite-blue.900',
+      bgGradient: "linear(to-br, rgba(0,0,102,.6), #330099)",
       borderColor: 'whiteAlpha.500',
     }),
     menu: (provided: SystemStyleObject) => ({
       ...provided,
-      position: 'relative',
-      m: 0,
-      bgColor: 'osl.purple.10',
+      p: 2,
+      bgColor: 'osl.purple.900',
+      borderRadius: '1rem',
       bgGradient: "linear(to-tl, rgba(0,0,102,.5), #330099)",
-      borderRadius: 'md',
-      borderColor: 'osl.dark-blue.10',
-      borderWidth: '4px',
-      borderStyle: 'inset'
     }),
     menuList: (provided: SystemStyleObject) => ({
       ...provided,
       bgColor: 'transparent',
       borderColor: 'none',
       borderWidth: 'none',
-      py: 0,
+      py: 1,
       pr: 1,
       // For Firefox
       scrollbarWidth: 'auto',
@@ -339,7 +335,7 @@ const FromToken = ({
   }: OptionProps<dataType, true, GroupBase<dataType>>) => {
     return (
       <chakraComponents.Option {...props}>
-        <Flex id={props.data.value} align="center" w="full">
+        <Flex id={props.data.value} align="center" w="full" >
           <Flex align="center" flex={1} mr={0}>
             <Box
               w={'42px'}
@@ -413,6 +409,7 @@ const FromToken = ({
         id={id}
         variant="unstyled"
         fontSize="xs"
+        overflow={'visible'}
         borderRadius="md"
         fontWeight="semibold"
         _focus={{
@@ -456,9 +453,11 @@ const FromToken = ({
       ref={fromMenuRef}
       position="relative"
       px={2}
+      overflow={'visible'}
     >
       <Flex
         position="relative"
+        overflow={'visible'}
         justify="space-between"
         transition="all .5s"
         animation={'ease-in-out'}
@@ -509,9 +508,10 @@ const FromToken = ({
           transition="all .5s"
           animation={'ease-in-out'}
           zIndex={1}
+          overflow={'visible'}
         >
           {fromItem ? (
-            <Flex>
+            <Flex overflow={'visible'}>
               <Box
                 borderRadius="full"
                 border="2px groove"
@@ -605,16 +605,15 @@ const FromToken = ({
       </Flex>
       <Box
         position="absolute"
-        zIndex={2000}
-        boxShadow={isOpen ? '0 12px 20px -8px rgba(105, 88, 164, 0.5)' : 'none'}
+        zIndex={3000}
+        boxShadow={isOpen ? '0 0 10px rgba(0, 0, 0, 1)' : 'none'}
         borderRadius="xl"
-        left={0}
-        right={0}
-        top={'6.5rem'}
+        top={'6.25rem'}
+        w={'50%'}
         px={0}
       >
-        <Collapse in={isOpen} animateOpacity>
-          <Box py={0}>
+        <Collapse in={isOpen} animateOpacity style={{overflow: 'visible'}}>
+          <Box>
             {fromItem ? (
               <AsyncSelect
                 placeholder="Search"
@@ -662,6 +661,7 @@ const FromToken = ({
             as="button"
             mt={1}
             mb={-8}
+            overflow={'visible'}
             zIndex={2}
             color={'whiteAlpha.600'}
             transition="all .5s"
@@ -704,27 +704,23 @@ const ToToken = ({
   const customStyles = {
     control: (provided: SystemStyleObject) => ({
       ...provided,
-      bgColor: 'osl.purple.500',
-      bgGradient: "linear(to-br, rgba(0,0,102,.9), #330099)",
+      bgColor: 'osl.lite-blue.900',
+      bgGradient: "linear(to-br, rgba(0,0,102,.6), #330099)",
       borderColor: 'whiteAlpha.500',
     }),
     menu: (provided: SystemStyleObject) => ({
       ...provided,
-      position: 'relative',
-      m: 0,
-      bgColor: 'osl.purple.10',
+      p: 2,
+      bgColor: 'osl.purple.900',
+      borderRadius: '1rem',
       bgGradient: "linear(to-tl, rgba(0,0,102,.5), #330099)",
-      borderRadius: 'md',
-      borderColor: 'osl.dark-blue.10',
-      borderWidth: '4px',
-      borderStyle: 'inset'
     }),
     menuList: (provided: SystemStyleObject) => ({
       ...provided,
-       bgColor: 'transparent',
+      bgColor: 'transparent',
       borderColor: 'none',
       borderWidth: 'none',
-      py: 0,
+      py: 1,
       pr: 1,
       // For Firefox
       scrollbarWidth: 'auto',
@@ -934,15 +930,14 @@ const ToToken = ({
       </Flex>
       <Box
         position="absolute"
-        zIndex={2000}
-        boxShadow={isOpen ? '0 12px 20px -8px rgba(105, 88, 164, 0.5)' : 'none'}
+        zIndex={3000}
+        boxShadow={isOpen ? '0 0 10px rgba(0, 0, 0, 1)' : 'none'}
         borderRadius="xl"
-        left={0}
-        right={0}
-        top={'6.5rem'}
+        top={'6.25rem'}
+        w={'50%'}
         px={0}
       >
-        <Collapse in={isOpen} animateOpacity>
+        <Collapse in={isOpen} animateOpacity style={{overflow: 'visible'}}>
           <Box py={0}>
             {toItem ? (
               <AsyncSelect
@@ -1088,17 +1083,31 @@ export const SwapCard = () => {
 
   return (
     <Card
-      w={{ base: '100%', lg: '75%', xl: '50%' }}
-      left={{ base: '0%', lg: '25%', xl: '65%' }}
-      top={{ base: '50px', lg: '100px', xl: '100px' }}
+      position={'relative'}
+      top={'90px'}
       bgGradient="linear(to-t, rgba(0,0,102,.8), #330099)"
       bgColor={'transparent'}
       borderColor={'blackAlpha.500'}
       borderWidth={'2px'}>
-    <Stack spacing={4} p={3}>
-      <Box zIndex={3000} alignSelf="end">
+      <Box zIndex={2} alignSelf={'end'} position={'absolute'} right={-12} top={-5}>
         <Setting />
       </Box>
+      <Stack spacing={4} p={3}>
+        <Button
+          fontWeight={'normal'}
+          w="full"
+          h={'3.5rem'}
+          bgGradient="linear(to-bl, rgba(204, 0, 255, 0.5), osl.orange.400)"
+          textShadow={'0px 0px 8px #000000'}
+          boxShadow={'0px 2px 8px rgba(0,0,0,0.8)'}
+          _hover={{
+            bgColor: "none",
+            bgGradient: "linear(to-tr, osl.lite-blue.500, #330099)",
+            textShadow: '0px 0px 20px #000',
+            boxShadow: '2px 2px 5px rgba(255,255,255,0.8)'
+          }}>
+        Swap
+      </Button>
       <FromToken
         data={data}
         fromItem={fromItem}
@@ -1107,7 +1116,7 @@ export const SwapCard = () => {
         setFromItem={setFromItem}
         setToItem={setToItem}
         setTokenInputValue={setTokenInputValue}
-      />
+        />
         <ToToken
           data={data}
           toItem={toItem}
@@ -1117,18 +1126,6 @@ export const SwapCard = () => {
         toItem={toItem}
         tokenInputValue={tokenInputValue}
       />
-        <Button
-          fontWeight={'normal'}
-          w="full"
-          bgGradient="linear(to-bl, rgba(204, 0, 255, 0.5), #330099)"
-          textShadow={'0px 0px 8px #000000'}
-          _hover={{
-            bgColor: "none",
-            bgGradient: "linear(to-tr, osl.lite-blue.500, #330099)",
-            textShadow: '0px 0px 20px #000'
-          }}>
-        Swap
-      </Button>
       </Stack>
       </Card>
   );
